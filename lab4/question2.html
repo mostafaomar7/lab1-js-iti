@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form">
+        <div class="flex">
+            <label>Department:</label>
+            <input type="radio" name="department" value="SD" id="sd" checked> <label for="sd">SD</label>
+            <input type="radio" name="department" value="OS" id="os"> <label for="os">OS</label>
+            <input type="radio" name="department" value="EL" id="el"> <label for="el">EL</label>
+        </div>
+        
+        <div class="flex">
+            <label for="studentName">StudentName:</label>
+            <input type="text" id="studentName" placeholder="Enter student name">
+            <div id="nameError" class="error-message">Name cannot be empty and must not be repeated</div>
+        </div>
+        
+        <div class="flex">
+            <label for="studentGrade">StudentGrade:</label>
+            <input type="number" id="studentGrade" min="0" max="100" placeholder="Enter grade (0-100)">
+            <div id="gradeError" class="error-message">Grade must be between 0 and 100</div>
+        </div>
+        
+        <div class="add">
+            <button style="color: black;" id="addBtn">Add</button>
+        </div>
+        
+        <div class="flex">
+            <label>Sort:</label>
+            <select id="sortSelect">
+                <option value="name">Name</option>
+                <option value="grade">Grade</option>
+            </select>
+        </div>
+        
+        <div class="flex">
+            <label>Filter:</label>
+            <select id="filterSelect">
+                <option value="all">All</option>
+                <option value="failed">Failed Students (Grade < 60)</option>
+                <option value="success">Success Students (Grade ≥ 60)</option>
+            </select>
+        </div>
+    </div>
+    
+    <table id="studentsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="./js/q2.js"></script>
+</body>
+</html>
