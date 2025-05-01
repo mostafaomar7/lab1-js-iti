@@ -9,7 +9,7 @@
     let filterSelect = document.getElementById("filterSelect");
 
     let students = [
-        { name: "Eman", grade: 30, department: "EL" },
+        { name: "Eman", grade: 65, department: "EL" },
         { name: "Ahmed", grade: 90, department: "OS" },
         { name: "Mona", grade: 50, department: "EL" }
     ];
@@ -27,21 +27,33 @@
         gradeError.style.display = "none";
     }
 
+    function getRowColor(grade) {
+        if (grade < 60) return "#ffcccc";        // أحمر
+        else if (grade <= 75) return "#cce5ff";  // أزرق فاتح
+        else return "#228899";                   // أزرق داكن
+    }
+    
     function tableOutput(data) {
         tbody.innerHTML = "";
         data.forEach(student => {
             let row = document.createElement("tr");
+            row.style.backgroundColor = getRowColor(student.grade); // تلوين الصف حسب الدرجة
+    
             row.innerHTML = `
                 <td>${student.name}</td>
                 <td>${student.grade}</td>
-                <td><button onclick="deleteStudent()">Delete</button></td>
+                <td><button onclick="deleteStudent(this, '${student.name}')">Delete</button></td>
             `;
             tbody.appendChild(row);
         });
     }
+    
 
-    function deleteStudent() {
-        students = table.tBodies[0].removeChild(table.tBodies[0].firstChild);   
+    
+    function deleteStudent(button, name) {
+        students = students.filter(student => student.name !== name);
+
+        button.parentElement.parentElement.remove();
     }
 
     addBtn.addEventListener("click", () => {
